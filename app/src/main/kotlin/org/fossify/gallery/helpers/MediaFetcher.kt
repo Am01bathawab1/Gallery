@@ -179,11 +179,12 @@ class MediaFetcher(val context: Context) {
     private fun getSelectionQuery(filterMedia: Int): String {
         val query = StringBuilder()
         if (filterMedia and TYPE_IMAGES != 0) {
-            photoExtensions.forEach {
-                query.append("${Images.Media.DATA} LIKE ? OR ")
-            }
+        photoExtensions.forEach {
+            query.append("${Images.Media.DATA} LIKE ? OR ")
         }
-
+        query.append("${Images.Media.DATA} LIKE ? OR ")
+        query.append("${Images.Media.DATA} LIKE ? OR ")
+    }
         if (filterMedia and TYPE_PORTRAITS != 0) {
             query.append("${Images.Media.DATA} LIKE ? OR ")
             query.append("${Images.Media.DATA} LIKE ? OR ")
@@ -218,6 +219,10 @@ class MediaFetcher(val context: Context) {
             photoExtensions.forEach {
                 args.add("%$it")
             }
+        }
+        if (filterMedia and TYPE_IMAGES != 0) {
+            args.add("%.heic")
+            args.add("%.heif")
         }
 
         if (filterMedia and TYPE_PORTRAITS != 0) {
@@ -318,7 +323,7 @@ class MediaFetcher(val context: Context) {
 
             var path = file.absolutePath
             var isPortrait = false
-            val isImage = path.isImageFast()
+            val isImage = path.isImageFast() || path.endsWith(".heic", true) || path.endsWith(".heif", true)
             val isVideo = if (isImage) false else path.isVideoFast()
             val isGif = if (isImage || isVideo) false else path.isGif()
             val isRaw = if (isImage || isVideo || isGif) false else path.isRawFast()
@@ -467,7 +472,7 @@ class MediaFetcher(val context: Context) {
                 }
 
                 val isPortrait = false
-                val isImage = path.isImageFast()
+                val isImage = path.isImageFast() || path.endsWith(".heic", true) || path.endsWith(".heif", true)
                 val isVideo = if (isImage) false else path.isVideoFast()
                 val isGif = if (isImage || isVideo) false else path.isGif()
                 val isRaw = if (isImage || isVideo || isGif) false else path.isRawFast()
@@ -554,7 +559,7 @@ class MediaFetcher(val context: Context) {
             }
 
             val filename = file.name ?: continue
-            val isImage = filename.isImageFast()
+            val isImage = filename.isImageFast() || filename.endsWith(".heic", true) || filename.endsWith(".heif", true)
             val isVideo = if (isImage) false else filename.isVideoFast()
             val isGif = if (isImage || isVideo) false else filename.isGif()
             val isRaw = if (isImage || isVideo || isGif) false else filename.isRawFast()
