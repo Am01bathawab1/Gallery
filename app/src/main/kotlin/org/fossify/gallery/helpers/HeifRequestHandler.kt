@@ -19,6 +19,7 @@ class HeifRequestHandler : RequestHandler() {
     val uri = request.uri ?: throw IllegalStateException("Uri missing")
     val file = File(uri.path!!)
     val bitmap = HeifDecoderWrapper.decode(file)
+        ?: throw IllegalStateException("Failed to decode HEIC/HEIF file: $uri")
     return Result(bitmap, Picasso.LoadedFrom.DISK)
    }
 }
