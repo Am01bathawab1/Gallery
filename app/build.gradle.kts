@@ -163,7 +163,6 @@ dependencies {
     implementation(libs.avif)
     implementation(libs.avif.integration)
     implementation(libs.jxl.integration)
-    implementation(libs.glide.heifdecoder)          // only the decoder (no full Glide)
     implementation(libs.okio)
 
     // Picasso (essential – the app’s image loader)
