@@ -27,6 +27,7 @@ animationAndroid = "3.0.5"
 glideCompiler = "5.0.7"
 zjupureWebpdecoder = "2.7.4.16.0"
 jxlDecoder = "2.6.0"
+heifIntegration = "1.0.0"
 gestureviews = "e706487a14"
 androidsvgAar = "1.4"
 androidphotofilters = "193f2ae509"
@@ -78,6 +79,7 @@ zjupure-webpdecoder = { module = "com.github.zjupure:webpdecoder", version.ref =
 picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
 avif-integration = { group = "com.github.bumptech.glide", name = "avif-integration", version.ref = "glideCompiler" }
 jxl-integration = { group = "io.github.awxkee", name = "jxl-coder-glide", version.ref = "jxlDecoder" }
+heif-integration = { group = "androidx.heifwriter", name = "heifwriter", version.ref = "heifIntegration" }
 [bundles]
 room = [
     "androidx-room-ktx",
