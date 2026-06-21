@@ -4,8 +4,6 @@
     android:installLocation="auto">
 
     <uses-sdk
-        android:minSdkVersion="26"
-        android:targetSdkVersion="36"
         tools:overrideLibrary="androidx.heifwriter" />
 
     <!-- override the android:maxSdkVersion="28" from PhotoEditorSDK with some higher number -->
