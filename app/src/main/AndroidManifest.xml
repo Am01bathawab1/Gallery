@@ -45,16 +45,16 @@
         android:required="false" />
 
     <application
-        android:name="org.fossify.gallery.App"
-        android:allowBackup="true"
-        android:appCategory="image"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_launcher_name"
-        android:requestLegacyExternalStorage="true"
-        android:roundIcon="@mipmap/ic_launcher"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        tools:replace="android:label">
+    android:name=".GalleryApplication"
+    android:allowBackup="true"
+    android:appCategory="image"
+    android:icon="@mipmap/ic_launcher"
+    android:label="@string/app_launcher_name"
+    android:requestLegacyExternalStorage="true"
+    android:roundIcon="@mipmap/ic_launcher"
+    android:supportsRtl="true"
+    android:theme="@style/AppTheme"
+    tools:replace="android:label">
 
         <activity
             android:name=".activities.SplashActivity"
