@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:installLocation="auto">
 
+    <uses-sdk
+        android:minSdkVersion="26"
+        android:targetSdkVersion="36"
+        tools:overrideLibrary="androidx.heifwriter" />
+
     <!-- override the android:maxSdkVersion="28" from PhotoEditorSDK with some higher number -->
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
