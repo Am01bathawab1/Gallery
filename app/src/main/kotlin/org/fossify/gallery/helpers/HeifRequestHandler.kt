@@ -16,10 +16,9 @@ class HeifRequestHandler : RequestHandler() {
     }
 
     override fun load(request: Request, networkPolicy: Int): Result {
-        val uri = request.uri ?: throw IllegalStateException("Uri missing")
-        val file = File(uri.path!!)
-        val inputStream = file.inputStream()
-        val bitmap = HeifDecoderWrapper.decode(inputStream)
-        return Result(bitmap, Picasso.LoadedFrom.DISK)
-    }
+    val uri = request.uri ?: throw IllegalStateException("Uri missing")
+    val file = File(uri.path!!)
+    val bitmap = HeifDecoderWrapper.decode(file)
+    return Result(bitmap, Picasso.LoadedFrom.DISK)
+   }
 }
