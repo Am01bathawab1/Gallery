@@ -163,14 +163,22 @@ dependencies {
     implementation(libs.avif)
     implementation(libs.avif.integration)
     implementation(libs.jxl.integration)
-    implementation(libs.glide)                // ← add this
-    implementation(libs.glide.heifdecoder)    // ← add this
+    implementation(libs.glide.heifdecoder)          // only the decoder (no full Glide)
     implementation(libs.okio)
-  
-    ksp(libs.glide.compiler)
+
+    // Picasso (essential – the app’s image loader)
+    implementation(libs.picasso) {
+        exclude(group = "com.squareup.okhttp3", module = "okhttp")
+    }
+    compileOnly(libs.okhttp)
+
+    // WebP decoder (unrelated, keep if needed)
     implementation(libs.zjupure.webpdecoder)
 
+    // Room database
     implementation(libs.bundles.room)
     ksp(libs.androidx.room.compiler)
+
+    // Detekt plugin (unrelated)
     detektPlugins(libs.compose.detekt)
 }
